@@ -1,4 +1,5 @@
 package ir.maktab.model;
+
 import ir.maktab.enums.Transaction;
 import jdk.jfr.Timestamp;
 import lombok.Data;
@@ -12,10 +13,10 @@ import java.util.Objects;
 public class Update {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private  int id;
-   private String fieldNme;
-   private String beforeUpdate;
-   private String afterUpdate;
+    private int id;
+    private String fieldNme;
+    private String beforeUpdate;
+    private String afterUpdate;
     @Enumerated(EnumType.STRING)
     private Transaction transaction;
     @Timestamp

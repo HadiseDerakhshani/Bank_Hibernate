@@ -2,7 +2,6 @@ package ir.maktab.model;
 
 
 import ir.maktab.enums.AccountType;
-import jdk.jfr.Timestamp;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -15,23 +14,23 @@ import java.util.Objects;
 @Data
 @Entity
 public class Account {
+    @Transient
+    final static public int baseBalance = 10000;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  int id;
-    private  int numAccount;
-    private  int numCard;
-    private  int cvv2;
-    private  double balance;
-    @Transient
-   final static public int baseBalance=10000;
+    private int id;
+    private int numAccount;
+    private int numCard;
+    private int cvv2;
+    private double balance;
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
     @CreationTimestamp
     private Date openingDate;
     @Temporal(TemporalType.DATE)
     private Date expirationDate;
-    @OneToMany(cascade = CascadeType.ALL,fetch =FetchType.EAGER)
-    private List<Update> updates=new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Update> updates = new ArrayList<>();
 
     @Override
     public String toString() {
